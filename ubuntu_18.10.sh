@@ -1,8 +1,19 @@
 # Startup script for Ubuntu 17.04 VPS on Vultr (Dev machine and cloud server)
 
 # add a new user @todo: make this a one-liner
-# adduser stvhwrd
-# usermod -aG sudo stvhwrd
+adduser --disabled-password --gecos "" zach
+usermod -aG sudo zach
+sudo sh -c "echo \"zach ALL=(all) NOPASSWD:ALL\" >> /etc/sudoers"
+
+
+# Setup SSH
+mkdir -p /home/zach/.ssh
+cp ~/.ssh/authorized_keys /home/zach/.ssh
+chown -R zach:zach /home/zach/
+chown root:root /home/zach
+chmod 700 /home/zach/.ssh
+chmod 644 /home/zach/.ssh/authorized_keys
+
 
 ## MANUALLY LOG OUT AS ROOT AND LOG IN AS NEW USER
 
