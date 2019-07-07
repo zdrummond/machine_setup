@@ -1,4 +1,13 @@
-# Startup script for Ubuntu 17.04 VPS on Vultr (Dev machine and cloud server)
+# Startup script for Ubuntu 18.04 VPS on Vultr (Dev machine and cloud server)
+
+# Apply latest patches
+sudo -s -- <<EOF
+apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
+apt-get autoremove -y
+apt-get autoclean -y
+EOF
 
 # add a new user @todo: make this a one-liner
 adduser --disabled-password --gecos "" zach
