@@ -15,15 +15,9 @@ chmod 700 /home/zach/.ssh
 chmod 644 /home/zach/.ssh/authorized_keys
 
 
-## MANUALLY LOG OUT AS ROOT AND LOG IN AS NEW USER
 
-# OPTIONAL: to add ssh key, assuming that you have ssh-copy-id installed on local machine and your keypair is in ~/.ssh and named id_rsa:
-# Locally, i.e. on your laptop.  eg. ssh-copy-id stvhwrd@45.63.10.205
-ssh-copy-id stvhwrd@<IP_ADDRESS_OF_SERVER>
-
-# log in with ssh key
-# eg. ssh stvhwrd@45.63.10.205
-ssh stvhwrd@<IP_ADDRESS_OF_SERVER>
+# Create a new SSH key for this machine and store the passowrd using my public key
+openssl rand -base64 20 | tee >(keybase pgp encrypt --no-self -o ~/.ssh/id_rsa_pwd.pgp zdrummond) | xargs -I{} ssh-keygen -t rsa -b 4096 -C "zdrummond@gmail.com" -N {} -f ~/.ssh/id_rsa
 
 # install some useful bits
 sudo apt update && sudo apt full-upgrade -y;
