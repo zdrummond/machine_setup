@@ -2,15 +2,7 @@
 
 # Apply latest patches
 mkdir ~/tools
-touch ~/tools/update-all.sh
-cat > ~/tools/update-all.sh <<EOF
-echo "Make sure your using sudo!!"
-apt-get update
-apt-get upgrade -y
-apt-get dist-upgrade -y
-apt-get autoremove -y
-apt-get autoclean -y
-EOF
+curl -fLo ~/tools/update-all.sh https://raw.githubusercontent.com/zdrummond/machine_setup/tools/update-all.sh
 chmod +x ~/tools/update-all.sh
 
 
