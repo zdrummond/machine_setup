@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "Make sure your using sudo!!"
 apt-get update
 apt-get upgrade -y
